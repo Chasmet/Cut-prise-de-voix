@@ -28,8 +28,8 @@ android {
 }
 
 // Kotlin 1.8+ a fusionné le contenu des anciens artefacts jdk7/jdk8 dans
-// kotlin-stdlib. Certaines dépendances transitives anciennes réclament encore
-// les artefacts 1.6.0, ce qui crée des classes dupliquées avec AndroidX.
+// kotlin-stdlib. Certaines dépendances binaires réclament encore les anciens
+// artefacts 1.6.0 : on les retire pour éviter les classes dupliquées.
 configurations.configureEach {
     exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
     exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
@@ -38,6 +38,10 @@ configurations.configureEach {
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.core:core:1.12.0'
+
+    // Le code VoiceCut reste entièrement Java. Cette bibliothèque runtime est
+    // seulement requise par certaines dépendances binaires transitives.
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
 
     // TAndroidLame embarque le véritable encodeur LAME natif. Ses anciennes
     // dépendances Android Support ne sont pas requises par VoiceCut.
