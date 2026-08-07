@@ -1,0 +1,43 @@
+name: Build VoiceCut MP3 APK
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-debug-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le projet
+        uses: actions/checkout@v4
+
+      - name: Installer Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Installer Gradle 8.7
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.7'
+
+      - name: Autoriser gradlew
+        run: chmod +x gradlew
+
+      - name: Compiler l'APK debug réel
+        run: ./gradlew assembleDebug --stacktrace
+
+      - name: Téléverser l'APK debug
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoiceCut-MP3-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14

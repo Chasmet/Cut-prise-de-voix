@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:contentDescription="CHK Cut"
+                android:src="@drawable/ic_chk_cut" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/brand_name"
+                    android:textColor="@color/text_primary"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/brand_subtitle"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_button_dark"
+                android:text="Historique"
+                android:textAllCaps="false"
+                android:textColor="@color/text_primary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_panel"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Personnage" android:textColor="@color/text_secondary" android:textStyle="bold" />
+            <Spinner android:id="@+id/spinnerProfile" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/bg_input" android:popupBackground="@color/panel_alt" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Catégorie" android:textColor="@color/text_secondary" android:textStyle="bold" />
+            <Spinner android:id="@+id/spinnerCategory" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/bg_input" android:popupBackground="@color/panel_alt" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Nom du futur fichier" android:textColor="@color/text_secondary" android:textStyle="bold" />
+            <EditText android:id="@+id/editFilename" android:layout_width="match_parent" android:layout_height="50dp" android:background="@drawable/bg_input" android:inputType="text" android:maxLines="1" android:textColor="@color/text_primary" android:textColorHint="@color/text_secondary" />
+            <Switch android:id="@+id/switchRapidMode" android:layout_width="match_parent" android:layout_height="48dp" android:checked="true" android:text="Mode enregistrement rapide" android:textColor="@color/text_primary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_panel"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView android:id="@+id/textTimer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00.000" android:textColor="@color/text_primary" android:textSize="28sp" android:textStyle="bold" />
+            <ProgressBar android:id="@+id/progressMic" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="14dp" android:layout_marginTop="10dp" android:max="100" android:progress="0" android:progressTint="@color/green" />
+            <TextView android:id="@+id/textLevel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="Micro : -∞ dB" android:textColor="@color/text_secondary" />
+            <Button android:id="@+id/btnRecord" android:layout_width="match_parent" android:layout_height="76dp" android:layout_marginTop="14dp" android:background="@drawable/bg_button_red" android:text="@string/record" android:textColor="@color/text_primary" android:textSize="20sp" android:textStyle="bold" />
+            <Button android:id="@+id/btnStop" android:layout_width="match_parent" android:layout_height="58dp" android:layout_marginTop="10dp" android:background="@drawable/bg_button_dark" android:enabled="false" android:text="@string/stop" android:textColor="@color/text_primary" android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/editorPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_panel"
+            android:orientation="vertical"
+            android:padding="14dp"
+            android:visibility="gone">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ÉDITEUR AUDIO" android:textColor="@color/text_primary" android:textSize="18sp" android:textStyle="bold" />
+            <com.chk.voicecut.WaveformView android:id="@+id/waveform" android:layout_width="match_parent" android:layout_height="190dp" android:layout_marginTop="10dp" android:background="@color/panel_alt" />
+            <TextView android:id="@+id/textSelectionDuration" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Sélection : 0 ms" android:textColor="@color/text_secondary" />
+            <Button android:id="@+id/btnAutoCut" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="10dp" android:background="@drawable/bg_button_dark" android:text="@string/auto_cut" android:textColor="@color/text_primary" android:textStyle="bold" />
+            <TextView android:id="@+id/textDetectionInfo" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="Détection prête" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/textPreMargin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Marge avant : 60 ms" android:textColor="@color/text_primary" />
+            <SeekBar android:id="@+id/seekPreMargin" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="200" android:progress="60" />
+            <TextView android:id="@+id/textPostMargin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Marge après : 120 ms" android:textColor="@color/text_primary" />
+            <SeekBar android:id="@+id/seekPostMargin" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="300" android:progress="120" />
+            <TextView android:id="@+id/textStart" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Début : 0 ms" android:textColor="@color/text_primary" android:textStyle="bold" />
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <Button android:id="@+id/btnStartMinus100" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:background="@drawable/bg_button_dark" android:text="-100" android:textColor="@color/text_primary" />
+                <Button android:id="@+id/btnStartMinus10" android:layout_width="0dp" android:layout_height="48dp" android:layout_marginStart="4dp" android:layout_weight="1" android:background="@drawable/bg_button_dark" android:text="-10" android:textColor="@color/text_primary" />
+                <Button android:id="@+id/btnStartPlus10" android:layout_width="0dp" android:layout_height="48dp" android:layout_marginStart="4dp" android:layout_weight="1" android:background="@drawable/bg_button_dark" android:text="+10" android:textColor="@color/text_primary" />
+                <Button android:id="@+id/btnStartPlus100" android:layout_width="0dp" android:layout_height="48dp" android:layout_marginStart="4dp" android:layout_weight="1" android:background="@drawable/bg_button_dark" android:text="+100" android:textColor="@color/text_primary" />
+            </LinearLayout>
+
+            <TextView android:id="@+id/textEnd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Fin : 0 ms" android:textColor="@color/text_primary" android:textStyle="bold" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <Button android:id="@+id/btnEndMinus100" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:background="@drawable/bg_button_dark" android:text="-100" android:textColor="@color/text_primary" />
+                <Button android:id="@+id/btnEndMinus10" android:layout_width="0dp" android:layout_height="48dp" android:layout_marginStart="4dp" android:layout_weight="1" android:background="@drawable/bg_button_dark" android:text="-10" android:textColor="@color/text_primary" />
+                <Button android:id="@+id/btnEndPlus10" android:layout_width="0dp" android:layout_height="48dp" android:layout_marginStart="4dp" android:layout_weight="1" android:background="@drawable/bg_button_dark" android:text="+10" android:textColor="@color/text_primary" />
+                <Button android:id="@+id/btnEndPlus100" android:layout_width="0dp" android:layout_height="48dp" android:layout_marginStart="4dp" android:layout_weight="1" android:background="@drawable/bg_button_dark" android:text="+100" android:textColor="@color/text_primary" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:orientation="horizontal">
+                <Button android:id="@+id/btnTrimBefore" android:layout_width="0dp" android:layout_height="50dp" android:layout_weight="1" android:background="@drawable/bg_button_dark" android:text="Supprimer avant" android:textAllCaps="false" android:textColor="@color/text_primary" />
+                <Button android:id="@+id/btnTrimAfter" android:layout_width="0dp" android:layout_height="50dp" android:layout_marginStart="6dp" android:layout_weight="1" android:background="@drawable/bg_button_dark" android:text="Supprimer après" android:textAllCaps="false" android:textColor="@color/text_primary" />
+            </LinearLayout>
+
+            <Button android:id="@+id/btnPlaySelection" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="12dp" android:background="@drawable/bg_button_dark" android:text="@string/listen_selection" android:textColor="@color/text_primary" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Nettoyage audio" android:textColor="@color/text_primary" android:textSize="16sp" android:textStyle="bold" />
+            <CheckBox android:id="@+id/checkNoiseReduction" android:layout_width="match_parent" android:layout_height="wrap_content" android:checked="true" android:text="Réduction légère du bruit continu" android:textColor="@color/text_primary" />
+            <CheckBox android:id="@+id/checkNormalize" android:layout_width="match_parent" android:layout_height="wrap_content" android:checked="true" android:text="Normalisation du volume" android:textColor="@color/text_primary" />
+            <CheckBox android:id="@+id/checkSmartGain" android:layout_width="match_parent" android:layout_height="wrap_content" android:checked="true" android:text="Amplification intelligente" android:textColor="@color/text_primary" />
+            <Button android:id="@+id/btnAutoEnhance" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="6dp" android:background="@drawable/bg_button_dark" android:text="@string/auto_enhance" android:textColor="@color/text_primary" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="Qualité MP3" android:textColor="@color/text_primary" android:textStyle="bold" />
+            <Spinner android:id="@+id/spinnerBitrate" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/bg_input" android:popupBackground="@color/panel_alt" />
+            <Button android:id="@+id/btnPreviewResult" android:layout_width="match_parent" android:layout_height="58dp" android:layout_marginTop="14dp" android:background="@drawable/bg_button_dark" android:text="@string/listen_result" android:textColor="@color/text_primary" android:textStyle="bold" />
+            <TextView android:id="@+id/textPreviewRequirement" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="Écoute complète obligatoire avant l'export." android:textColor="@color/warning" />
+            <Button android:id="@+id/btnExport" android:layout_width="match_parent" android:layout_height="64dp" android:layout_marginTop="10dp" android:background="@drawable/bg_button_red" android:enabled="false" android:text="@string/export_mp3" android:textColor="@color/text_primary" android:textSize="17sp" android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView android:id="@+id/textStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:gravity="center" android:text="Prêt" android:textColor="@color/text_secondary" />
+
+    </LinearLayout>
+</ScrollView>

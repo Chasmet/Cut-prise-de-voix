@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VoiceCut MP3</string>
+    <string name="brand_name">CHK CUT</string>
+    <string name="brand_subtitle">VoiceCut MP3</string>
+    <string name="record">ENREGISTRER</string>
+    <string name="stop">STOP</string>
+    <string name="history">MES ENREGISTREMENTS</string>
+    <string name="auto_cut">CALER SUR LA VOIX</string>
+    <string name="listen_selection">▶ ÉCOUTER LA SÉLECTION</string>
+    <string name="listen_result">▶ ÉCOUTER LE RÉSULTAT</string>
+    <string name="export_mp3">EXPORTER EN MP3</string>
+    <string name="auto_enhance">AMÉLIORATION AUTOMATIQUE</string>
+</resources>
