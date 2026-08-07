@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Installer Java 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
@@ -32,7 +32,19 @@ jobs:
         run: chmod +x gradlew
 
       - name: Compiler l'APK debug réel
-        run: ./gradlew assembleDebug --stacktrace
+        shell: bash
+        run: |
+          set -o pipefail
+          ./gradlew assembleDebug --stacktrace --info 2>&1 | tee build.log
+
+      - name: Conserver le journal de compilation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoiceCut-build-log
+          path: build.log
+          if-no-files-found: warn
+          retention-days: 7
 
       - name: Téléverser l'APK debug
         uses: actions/upload-artifact@v4
