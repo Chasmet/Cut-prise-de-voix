@@ -144,7 +144,7 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     private LinearLayout buttonRow() { LinearLayout row = new LinearLayout(this); row.setOrientation(LinearLayout.HORIZONTAL); row.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)); return row; }
-    private Button actionButton(String text) { Button b = new Button(this); b.setText(text); b.setTextAllCaps(false); b.setTextColor(ContextCompat.getColor(this, R.color.text_primary)); b.setTextSize(12f); b.setBackgroundResource(R.drawable.bg_button_dark); return b; }
+    private Button actionButton(String text) { Button b = new Button(this); b.setText(text); b.setAllCaps(false); b.setTextColor(ContextCompat.getColor(this, R.color.text_primary)); b.setTextSize(12f); b.setBackgroundResource(R.drawable.bg_button_dark); return b; }
     private LinearLayout.LayoutParams weightParams() { return new LinearLayout.LayoutParams(0, dp(48), 1f); }
     private LinearLayout.LayoutParams weightParamsWithMargin() { LinearLayout.LayoutParams p = weightParams(); p.leftMargin = dp(5); return p; }
     private int dp(int value) { return Math.round(value * getResources().getDisplayMetrics().density); }
